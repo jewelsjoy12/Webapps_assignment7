@@ -3,8 +3,17 @@ var $ = function (id) {
 }
 
 function addPatron() {
-  isValid = validateItems();
+  // Defining variables
+  var firstName = $("firstname").value;
+  var lastName = $("lastname").value;
+  var email = $("email").value;
+  var city = $("city").value;
+  var donation = $("donation").value;
 
+  // Send values to validation
+  var isValid = validateItems(firstName, lastName, email, city, donation);
+
+  // Validation response - submit or error
   if (isValid) {
     $('myform').submit();
   } else {
@@ -12,16 +21,45 @@ function addPatron() {
   }
 }
 
-function validateItems() {
-  // performs validations on all fields
-  myname = $("firstname").value;
-  
+function validateItems(firstName, lastName, email, city, donation) {
+  var isValid = true;
 
-  if (myname.length == 0) {
-    return false;
-  } else {
-    return true;
+  // Reset messages if submit button is clicked again
+  $("firstnameerror").innerHTML = "";
+  $("lastnameerror").innerHTML = "";
+  $("emailerror").innerHTML = "";
+  $("cityerror").innerHTML = "";
+  $("donationerror").innerHTML = "";
+
+  //validate each field
+  if (firstName.length == 0) {
+    $("firstnameerror").innerHTML = "Enter First Name";
+    isValid = false;
   }
+  if (lastName.length == 0) {
+    $("lastnameerror").innerHTML = "Enter Last Name";
+    isValid = false;
+  }
+
+  if (email.length == 0) {
+    $("emailerror").innerHTML = "Enter Email";
+    isValid = false;
+  }
+
+  if (city == '-') {
+    $("cityerror").innerHTML = "Select a City from the list";
+    isValid = false;
+  }
+
+  if (donation.length == 0) {
+    $("donationerror").innerHTML = "Enter Donation Amount";
+    isValid = false;
+  } else if (isNaN(donation)) {
+    $("donationerror").innerHTML = "Amount must be numeric";
+    isValid = false;
+  }
+
+  return isValid;
 }
 
 
