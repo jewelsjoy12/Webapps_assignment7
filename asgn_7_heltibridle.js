@@ -63,7 +63,6 @@ function validateItems(firstName, lastName, email, city, donation) {
   return isValid;
 }
 
-
 var clearFields = function () {
   $("firstname").value = "";
   $("lastname").value = "";
@@ -78,7 +77,6 @@ var clearFields = function () {
   $("donationerror").innerHTML = "";
 
   $("endmessage").innerHTML = "";
-
 }
 
 window.onload = function () {
