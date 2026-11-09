@@ -30,6 +30,7 @@ function validateItems(firstName, lastName, email, city, donation) {
   $("emailerror").innerHTML = "";
   $("cityerror").innerHTML = "";
   $("donationerror").innerHTML = "";
+  $("endmessage").innerHTML = "";
 
   //validate each field
   if (firstName.length == 0) {
@@ -63,8 +64,21 @@ function validateItems(firstName, lastName, email, city, donation) {
 }
 
 
-function clearFields() {
-  // JavaScript for clearing fields
+var clearFields = function () {
+  $("firstname").value = "";
+  $("lastname").value = "";
+  $("email").value = "";
+  $("city").value = "-";
+  $("donation").value = "";
+
+  $("firstnameerror").innerHTML = "";
+  $("lastnameerror").innerHTML = "";
+  $("emailerror").innerHTML = "";
+  $("cityerror").innerHTML = "";
+  $("donationerror").innerHTML = "";
+
+  $("endmessage").innerHTML = "";
+
 }
 
 window.onload = function () {
