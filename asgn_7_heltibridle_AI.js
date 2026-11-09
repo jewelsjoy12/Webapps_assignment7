@@ -3,6 +3,8 @@ var $ = function (id) {
 }
 
 function addPatron() {
+  formatNames();
+
   // Defining variables
   var firstName = $("firstname").value;
   var lastName = $("lastname").value;
@@ -19,6 +21,22 @@ function addPatron() {
   } else {
     $('endmessage').innerHTML = "Patron Not Added!"
   }
+}
+
+function formatNames() {
+  var firstName = $("firstname").value.trim().replace(/\s+/g, " ");
+  var lastName = $("lastname").value.trim().replace(/\s+/g, " ");
+
+  if (firstName.length > 0) {
+    firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+  }
+
+  if (lastName.length > 0) {
+    lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+  }
+
+  $("firstname").value = firstName;
+  $("lastname").value = lastName;
 }
 
 function validateItems(firstName, lastName, email, city, donation) {
@@ -77,10 +95,45 @@ var clearFields = function () {
   $("donationerror").innerHTML = "";
 
   $("endmessage").innerHTML = "";
+
+  $("firstname").focus();
+}
+
+function setFieldFocus(field) {
+  var fields = document.querySelectorAll(
+    "#myform input, #myform select, #myform textarea"
+  );
+
+  for (var i = 0; i < fields.length; i++) {
+    fields[i].style.backgroundColor = "white";
+  }
+
+  field.style.backgroundColor = "yellow";
+}
+
+function clearFieldFocus(field) {
+  field.style.backgroundColor = "white";
 }
 
 window.onload = function () {
   $("addpatron").onclick = addPatron;
   $("clearfields").onclick = clearFields;
+
+  var fields = document.querySelectorAll(
+    "#myform input, #myform select, #myform textarea"
+  );
+
+  for (var i = 0; i < fields.length; i++) {
+    fields[i].onfocus = function () {
+      setFieldFocus(this);
+    };
+
+    fields[i].onblur = function () {
+      clearFieldFocus(this);
+    };
+
+    fields[i].style.backgroundColor = "white";
+  }
+
   $("firstname").focus();
 }

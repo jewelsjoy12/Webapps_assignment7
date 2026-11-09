@@ -1,0 +1,21 @@
+For Part 2, I used ChatGPT 5.6 Luna Medium.
+
+My Prompts:
+I have a JavaScript program that I would like you to enhance. I will upload the file, and then provide you with the instructions on what I would like to add.
+
+I uploaded asgn_7_heltibridle.js to ChatGPT.
+
+Enhancements: 
+1. make the background of any field turn yellow when it has focus. Make sure all other fields without focus revert to the white background.
+2. every time a button is clicked, trim and collapse whitespace on the first and last name fields, so that all leading/trailing whitespace is removed.
+3. change any first or last name entered to have the first letter of the name capitalized and placed back into the field.
+
+can you please show me the code and explain what you did? Keep explanations short.
+
+ChatGPT generated the code for the changes, as well as provided this summary:
+
+What I added:
+- formatNames() removes extra whitespace and capitalizes the first letter.
+- formatNames() runs whenever either button is clicked.
+- setFieldFocus() changes the active field to yellow and resets all others to white.
+- clearFieldFocus() returns a field to white when it loses focus.

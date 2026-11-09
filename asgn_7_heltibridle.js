@@ -77,6 +77,8 @@ var clearFields = function () {
   $("donationerror").innerHTML = "";
 
   $("endmessage").innerHTML = "";
+
+  $("firstname").focus();
 }
 
 window.onload = function () {
